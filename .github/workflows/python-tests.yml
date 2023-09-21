@@ -1,0 +1,22 @@
+name: Ejecutar pruebas en Python
+
+on: [push]
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Configurar el entorno
+      uses: actions/checkout@v2
+
+    - name: Configurar Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+
+    - name: Instalar dependencias
+      run: pip install -r requirements.txt  # Si tienes requisitos específicos
+
+    - name: Ejecutar pruebas
+      run: python -m unittest discover
